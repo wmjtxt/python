@@ -1,5 +1,7 @@
-work of Python
+works of Python
 ====
 
-# 服务器客户端
-# 爬虫
+|project|.py|
+|:-:|-|
+|服务器客户端|tsTserv.py<br/>tsTclnt.py|
+|爬虫|pachong.py<br/>dmoz_spider.py<br/>quotes_spider.py|
