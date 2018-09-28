@@ -34,7 +34,7 @@ def read_graph_from_file(path):
     graph.add_edges_from(edges_list)
 
     # 给每个节点增加标签
-    for node, data in graph.nodes_iter(True):
+    for node, data in graph.nodes(True):
         data['label'] = node
 
     return graph
@@ -51,7 +51,7 @@ def lpa(graph):
         算法终止条件：所有节点的标签与大部分邻居节点标签相同或者迭代次数超过指定值则停止
         :return:
         """
-        for node in graph.nodes_iter():
+        for node in graph.nodes():
             count = {}
             for neighbor in graph.neighbors_iter(node):
                 neighbor_label = graph.node[neighbor]['label']
@@ -75,7 +75,7 @@ def lpa(graph):
         loop_count += 1
         print('迭代次数', loop_count)
 
-        for node in graph.nodes_iter():
+        for node in graph.nodes():
             count = {}
             for neighbor in graph.neighbors_iter(node):
                 neighbor_label = graph.node[neighbor]['label']
@@ -98,7 +98,7 @@ def lpa(graph):
 
 if __name__ == "__main__":
 
-    path = "/home/dreamhome/network-datasets/dolphins/out.dolphins"
+    path = "/home/wmj/wmjNote/cdcn/data/zachary.csv"
     graph = read_graph_from_file(path)
     lpa(graph)
 
