@@ -25,12 +25,17 @@ def read_graph_from_file(path):
     # 开始获取边
     fp = open(path)
     edge = fp.readline().split()
+    #print(edge[0])
     while edge:
         if edge[0].isdigit() and edge[1].isdigit():
             edges_list.append((int(edge[0]), int(edge[1])))
         edge = fp.readline().split()
     fp.close()
+
+    print(edges_list)
+
     # 为图增加边
+
     graph.add_edges_from(edges_list)
 
     # 给每个节点增加标签
@@ -53,7 +58,7 @@ def lpa(graph):
         """
         for node in graph.nodes():
             count = {}
-            for neighbor in graph.neighbors_iter(node):
+            for neighbor in graph.neighbors(node):
                 neighbor_label = graph.node[neighbor]['label']
                 count[neighbor_label] = count.setdefault(
                     neighbor_label, 0) + 1
@@ -77,7 +82,7 @@ def lpa(graph):
 
         for node in graph.nodes():
             count = {}
-            for neighbor in graph.neighbors_iter(node):
+            for neighbor in graph.neighbors(node):
                 neighbor_label = graph.node[neighbor]['label']
                 count[neighbor_label] = count.setdefault(
                     neighbor_label, 0) + 1
@@ -98,7 +103,7 @@ def lpa(graph):
 
 if __name__ == "__main__":
 
-    path = "/home/wmj/wmjNote/cdcn/data/zachary.csv"
+    path = "/home/wmj/wmjNote/cdcn/data/test.csv"
     graph = read_graph_from_file(path)
     lpa(graph)
 
